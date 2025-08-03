@@ -1,0 +1,41 @@
+name: Build FAP
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install uFBT
+        run: |
+          python3 -m pip install ufbt
+
+      - name: Create firmware structure
+        run: |
+          git clone --depth=1 https://github.com/flipperdevices/flipperzero-firmware firmware
+          mkdir -p firmware/applications_user/
+          cp -r * firmware/applications_user/
+          cd firmware
+          ufbt doctor
+
+      - name: Build app
+        run: |
+          cd firmware
+          ufbt faps
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: flipper-app
+          path: firmware/dist/**/*.fap
