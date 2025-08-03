@@ -1,8 +1,8 @@
-App(
-  appid="nrf24_scanner",
-  name="NRF24 Scanner",
-  entry="nrf24_scanner.c",
-  version="1.0.0",
-  description="Scans NRF24 channels and displays activity.",
-  author="litnL"
-)
+appid: flipper_app_1
+name: Flipper App 1
+apptype: FlipperAppType.EXTERNAL
+entry_point: flipper_app_1
+api_version: 27
+version: "1.0.0"
+author: "LitnL"
+description: "Example Flipper Zero app built from GitHub"
