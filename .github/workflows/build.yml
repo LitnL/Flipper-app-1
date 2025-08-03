@@ -27,7 +27,7 @@ jobs:
           mkdir -p firmware/applications_user/Flipper-app-1
           cp -r * firmware/applications_user/Flipper-app-1 || true
           cd firmware
-          ufbt doctor
+          ufbt faps
 
       - name: Build app
         run: |
