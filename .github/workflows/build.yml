@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
@@ -21,11 +21,11 @@ jobs:
         run: |
           python3 -m pip install ufbt
 
-      - name: Create firmware structure
+      - name: Clone Flipper Firmware & Setup App
         run: |
           git clone --depth=1 https://github.com/flipperdevices/flipperzero-firmware firmware
-          mkdir -p firmware/applications_user/
-          cp -r * firmware/applications_user/
+          mkdir -p firmware/applications_user/Flipper-app-1
+          cp -r * firmware/applications_user/Flipper-app-1 || true
           cd firmware
           ufbt doctor
 
@@ -34,8 +34,8 @@ jobs:
           cd firmware
           ufbt faps
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload FAP
+        uses: actions/upload-artifact@v4
         with:
           name: flipper-app
           path: firmware/dist/**/*.fap
