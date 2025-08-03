@@ -32,8 +32,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: flipper-app
-          path: firmware/dist/**/*.fap      - name: Upload FAP
-        uses: actions/upload-artifact@v4
-        with:
+          path: firmware/dist/**/*.fap        with:
           name: flipper-app
           path: firmware/dist/**/*.fap
