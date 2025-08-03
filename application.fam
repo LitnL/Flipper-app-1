@@ -4,5 +4,5 @@ App(
   entry="nrf24_scanner.c",
   version="1.0.0",
   description="Scans NRF24 channels and displays activity.",
-  author="LitnL"
+  author="litnL"
 )
