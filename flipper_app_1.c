@@ -6,7 +6,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <furi.h>
 
+int32_t flipper_app_1(void) {
+    // Display something or do something here
+    return 0;
+}
 #define LOG_PATH "/ext/nrfscan/session1.nrf"
 #define MAX_CHANNELS 126
 
